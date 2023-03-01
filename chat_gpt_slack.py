@@ -39,10 +39,11 @@ def process(client: SocketModeClient, req: SocketModeRequest):
         response = SocketModeResponse(envelope_id=req.envelope_id)
         client.send_socket_mode_response(response)
 
-        # Add a reaction to the message if it's a new message
+        # Add a reaction to the message if it's for me
         print("payload:" + json.dumps(req.payload, indent = 4))
 
-        if req.payload["event"]["text"].startswith("chatgpt,"):
+        my_id = "<@" + req.payload["authorizations"][0]["user_id"] + ">"
+        if req.payload["event"]["text"].startswith(my_id):
             client.web_client.reactions_add(
                 name="eyes",
                 channel=req.payload["event"]["channel"],
@@ -50,9 +51,11 @@ def process(client: SocketModeClient, req: SocketModeRequest):
             )
 
             input_box = selclient.find_element("xpath", '//textarea[contains(@data-id,"request-:Rdd6:")]')
-            #print(input_box)
 
-            input_box.send_keys(req.payload["event"]["text"])
+            question = req.payload["event"]["text"][len(my_id) + 1:]
+            print(question)
+
+            input_box.send_keys(question)
 
             input_box.send_keys(Keys.RETURN)
 
