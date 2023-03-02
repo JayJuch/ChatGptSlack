@@ -2,14 +2,18 @@
 
 
 ## Create a bot for your workspace
-Create a bot add to your workspace with the following features:
-* Bot
-* WebSocket
-* app_mentions:read
-* chat:write
-* reactions:write
+As this bot is not set up to be distributed on the marketplace you'll need to go through the process of creating a bot to set up the tokens and permissions.
+Go to: https://api.slack.com/apps
+Create a bot to add to your workspace with the following features:
+* Select Bot as the template
+* Name doesn't matter just note that you'll be referring to it with @the_name_you_choose
+* Enable WebSocket
+* Add the following permissions
+  * app_mentions:read
+  * chat:write
+  * reactions:write
 
-Save and secure the bots app token and bot token.
+Save and secure the bot's app token and bot token.
 
 ## Configure your python Bot
 You'll need to set environment variables for app token and bot token.
