@@ -2,7 +2,7 @@
 
 
 ## Create a bot for your workspace
-As this bot is not set up to be distributed on the marketplace you'll need to go through the process of creating a bot to set up the tokens and permissions.
+As this bot is not set up to be distributed on the marketplace, you'll need to go through the process of creating a bot to set up the tokens and permissions.
 Go to: https://api.slack.com/apps
 Create a bot to add to your workspace with the following features:
 * Select Bot as the template
